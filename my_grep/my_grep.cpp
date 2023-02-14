@@ -10,13 +10,18 @@ int main(){
 	std::cout << "Give search string: ";
 	std::getline(std::cin, search);
 
+	if (search.length() > usr_in.length()) {
+		std::cout << "Search string too long, give new search string: ";
+		std::getline(std::cin, search);
+	}
+
 	std::size_t found = usr_in.find(search);
 
 	if (found != std::string::npos) {
-		std::cout << '"' << search << '"' << "found in" << '"' << usr_in << '"' << "in position " << found;
+		std::cout << '"' << search << '"' << " found in " << '"' << usr_in << '"' << " in position " << found;
 	}
 	else {
-		std::cout << '"' << search << '"' << "NOT found in " << '"' << usr_in << '"';
+		std::cout << '"' << search << '"' << " NOT found in " << '"' << usr_in << '"';
 	}
 	return 0;
 }
