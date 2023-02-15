@@ -5,19 +5,17 @@
 #include <fstream>
 #include <algorithm>
 
-void str_search(std::string*, std::string*);
-void input_search();
+void str_search(std::string*, std::string*); //Function for searching another string from a string
+void input_search();//If no additional arguments given, program goes to this function
+void file_search(std::string, std::string);//If given search string and file name, go here
 
 int main(int argc, char* argv[]) {
-
+	std::string search_str = argv[1], filename = argv[2];
 	if (argc == 1) {//If no other argumens than program name is given, run this
 		input_search();
 	}
 	else if (argc >= 2) {
-		std::cout << "Count of arguments: " << argc << '\n';
-		for (int i = 0; i < argc; i++) {
-			std::cout << "\nargv[" << i << "]: " << argv[i];
-		}
+		file_search(search_str, filename);
 	}
 	return 0;
 }
@@ -62,6 +60,23 @@ void str_search(std::string* input, std::string* searcher) { //Function for sear
 	else {
 		std::cout << '"' << searchstr << '"' << " NOT found in " << '"' << inputstr << '"';
 	}
+
+}
+void file_search(std::string srch, std::string fname) {
+	std::ifstream filein;
+	
+	filein.open(fname);
+
+	if (filein.good()) {
+		std::cout << "File " << fname << " is open.";
+		
+	}
+	else {
+		std::cout << "File " << fname << " cannot be opened.";
+	}
+	filein.close();
+
+	
 
 }
 
