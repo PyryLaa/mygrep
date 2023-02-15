@@ -6,13 +6,28 @@
 #include <algorithm>
 
 void str_search(std::string*, std::string*);
-std::string str_convert(std::string*, std::string*);
+void input_search();
 
-int main(){
+int main(int argc, char* argv[]) {
 
+	if (argc == 1) {//If no other argumens than program name is given, run this
+		input_search();
+	}
+	else if (argc >= 2) {
+		std::cout << "Count of arguments: " << argc << '\n';
+		for (int i = 0; i < argc; i++) {
+			std::cout << "\nargv[" << i << "]: " << argv[i];
+		}
+	}
+	return 0;
+}
+
+
+void input_search() {
 	std::string usr_in, search;
 	std::string* input_ptr, * search_ptr;
 	char case_s;
+
 	std::cout << "Give a string from which to search for: ";
 	std::getline(std::cin, usr_in);
 	std::cout << "Give search string: ";
@@ -36,9 +51,7 @@ int main(){
 
 	str_search(input_ptr, search_ptr);
 	
-	return 0;
 }
-
 void str_search(std::string* input, std::string* searcher) { //Function for searching the string in the input string
 	std::string inputstr = *input, searchstr = *searcher;
 	std::size_t found = inputstr.find(searchstr);
