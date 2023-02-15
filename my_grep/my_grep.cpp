@@ -1,4 +1,3 @@
-//For now, this program will ask for a string from the user and then ask another string to search from the first given string
 
 #include <iostream>
 #include <string>
