@@ -10,11 +10,12 @@ void input_search();//If no additional arguments given, program goes to this fun
 void file_search(std::string, std::string);//If given search string and file name, go here
 
 int main(int argc, char* argv[]) {
-	std::string search_str = argv[1], filename = argv[2];
+	
 	if (argc == 1) {//If no other argumens than program name is given, run this
 		input_search();
 	}
 	else if (argc >= 2) {
+		std::string search_str = argv[1], filename = argv[2];
 		file_search(search_str, filename);
 	}
 	return 0;
@@ -64,11 +65,25 @@ void str_search(std::string* input, std::string* searcher) { //Function for sear
 }
 void file_search(std::string srch, std::string fname) {
 	std::ifstream filein;
-	
+	std::string line;
+	std::size_t found;
+	bool in_text = false;
 	filein.open(fname);
 
 	if (filein.good()) {
-		std::cout << "File " << fname << " is open.";
+		//std::cout << "File " << fname << " is open.";
+		while (std::getline(filein, line)) {
+
+			found = line.find(srch);
+
+			if (found != std::string::npos) {
+				std::cout << line << '\n';
+				in_text = true;
+			}
+		}
+		if (in_text == false) {
+			std::cout << '"' << srch << '"' << " not found in " << fname;
+		}
 		
 	}
 	else {
