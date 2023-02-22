@@ -3,9 +3,10 @@ This program is a very minimalist version of grep. This readme will be updated a
 DD/MM/YY
 
 Accepted command line options:
--ol     Gives you the amount of lines in the file
+-ol     Gives you the number of the line where the matching string was found
 -oo     Gives you the occurences of lines containing the search string in the file
 -olo    Combination of -ol and -oo
+-h      Prints short usage guide (give only this after ./my_grep.exe)
 
 
 
@@ -16,7 +17,7 @@ Above will search for the string "following" from "man_grep_plain_ASCII.txt" fil
 
 
 ./my_grep.exe -ol following man_grep_plain_ASCII.txt
-Above will search for the string "following" from "man_grep_plain_ASCII.txt" file, print out the lines containing the string and the count of lines in the file
+Above will search for the string "following" from "man_grep_plain_ASCII.txt" file, print out the lines containing the string and the line number where it was found
 
 22/02/23
 Added more command line arguments

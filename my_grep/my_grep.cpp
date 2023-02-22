@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -17,17 +16,15 @@ int main(int argc, char* argv[]) {
 	
 
 	if (argc == 2) {
-		std::string help = argv[1];
-		if (help == "-h" || help == "-?") {
-			std::cout << "Usage: If you give no arguments, program will ask you to give string and then another string to search from the first"
-				<< "\nAccepted arguments (give in this order): <search options> <search string> <filename>"
-				<< "\nAccepted file extension is .txt"
-				<< "\nAccepted search options (these are optional): <-ol> <-oo> <-olo>"
-				<< "\n<-ol> gives you the count from which line the string is found"
-				<< "\n<-oo> gives you the count of lines found"
-				<< "\n<-olo> gives you both counts";
-		}
-
+		
+		std::cout << "Usage: If you give no arguments, program will ask you to give string and then another string to search from the first"
+			<< "\nAccepted arguments (give in this order): <search options> <search string> <filename>"
+			<< "\nAccepted file extension is .txt"
+			<< "\nAccepted search options (these are optional): <-ol> <-oo> <-olo>"
+			<< "\n<-ol> gives you the count from which line the string is found"
+			<< "\n<-oo> gives you the count of lines where the string is found"
+			<< "\n<-olo> gives you both counts";
+		
 	}
 
 	if (argc == 1) {//If no other argumens than program name is given, run this
@@ -141,7 +138,7 @@ void file_search(int arg_c, ...) { //Searches the given file for the given strin
 		}
 	}
 	catch (std::string exception) {
-		std::cout << "File cannot be opened";
+		std::cout << exception;
 	}
 
 	if (filein.good()) {
