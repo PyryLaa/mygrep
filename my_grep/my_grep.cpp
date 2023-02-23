@@ -1,9 +1,8 @@
 #include <iostream>
-#include <string>
-#include <fstream>
-#include <algorithm>
-#include <stdarg.h>
-
+#include <string> //For string handling
+#include <fstream> //File handling
+#include <algorithm> //For character case conversion
+#include <stdarg.h> //For handling variable amount of arguments
 
 
 void str_search(std::string*, std::string*); //Function for searching another string from a string
@@ -15,7 +14,7 @@ int main(int argc, char* argv[]) {
 
 	
 
-	if (argc == 2) {
+	if (argc == 2 || argc > 4) {
 		
 		std::cout << "Usage: If you give no arguments, program will ask you to give string and then another string to search from the first"
 			<< "\nAccepted arguments (give in this order): <search options> <search string> <filename>"
@@ -26,8 +25,7 @@ int main(int argc, char* argv[]) {
 			<< "\n<-olo> gives you both counts";
 		
 	}
-
-	if (argc == 1) {//If no other argumens than program name is given, run this
+	else if (argc == 1) {//If no other argumens than program name is given, run this
 		input_search();
 	}
 	else if (argc == 3) { //If only search string and file from which to search is given
@@ -84,7 +82,7 @@ void str_search(std::string* input, std::string* searcher) { //Function for sear
 
 }
 void file_search(int arg_c, ...) { //Searches the given file for the given string, additional options include line count in the file and count of found lines
-	va_list argl; //This is the list of arguments
+	va_list argl; //This is the list of arguments, va_list enables the use of variable amount of arguments to a function
 	va_start(argl, arg_c);
 
 	std::string fname;
@@ -106,10 +104,7 @@ void file_search(int arg_c, ...) { //Searches the given file for the given strin
 	}
 	va_end(argl);
 
-
-
-	
-	int opt_case = 0;
+	int opt_case = 0; //
 
 	if (srch_opt == "-ol") {
 		opt_case = 1;
@@ -120,8 +115,6 @@ void file_search(int arg_c, ...) { //Searches the given file for the given strin
 	else if (srch_opt == "-olo") {
 		opt_case = 3;
 	}
-	
-
 	
 	std::ifstream filein;
 	std::string line;
@@ -176,11 +169,6 @@ void file_search(int arg_c, ...) { //Searches the given file for the given strin
 		}
 		
 	}
-	
-	
 	filein.close();
-
-	
-
 }
 
