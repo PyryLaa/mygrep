@@ -137,7 +137,7 @@ void file_search(int arg_c, ...) { //Searches the given file for the given strin
 	}
 
 	if (filein.good()) {
-		//std::cout << "File " << fname << " is open.";
+		
 		while (std::getline(filein, line)) {
 
 			found = line.find(srch);
