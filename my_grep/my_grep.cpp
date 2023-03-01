@@ -69,6 +69,8 @@ void input_search() { //If no args given when starting the program, goes here. A
 	str_search(input_ptr, search_ptr);
 	
 }
+
+
 void str_search(std::string* input, std::string* searcher) { //Function for searching the string in the input string
 	std::string inputstr = *input, searchstr = *searcher;
 	std::size_t found = inputstr.find(searchstr);
